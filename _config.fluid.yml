@@ -1,3 +1,8 @@
+# 用于浏览器标签的图标
+favicon: /img/logo.ico
+# 浏览器标签页中的标题分隔符，效果： 文章名 - 站点名
+tab_title_separator: " - "
+
 # 导航栏
 navbar:
   blog_title: 奔跑的大黄
@@ -19,8 +24,8 @@ about:
   intro: "做一个「优雅」的程序猿"
   icons:
     - { class: 'iconfont icon-github-fill', link: 'https://github.com/boothua-cloud/boothua-cloud.github.io', tip: 'GitHub' }
-    - { class: 'iconfont icon-wechat-fill', qrcode: '/img/wechat.jpg' ,tip: 'WeChat' }
-    - { class: 'iconfont icon-mail', link: 'boothua@163.com' ,tip: 'Email' }
+    - { class: 'iconfont icon-wechat-fill', qrcode: '/img/wechat.png', tip: 'WeChat' }
+    - { class: 'iconfont icon-mail', href: 'boothua@163.com', tip: 'boothua@163.com' }
 
 # 强制https
 force_https: false
