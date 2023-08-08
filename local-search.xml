@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>Nginx代理Harbor</title>
+    <link href="/2023/08/08/docker-harbor-proxy/"/>
+    <url>/2023/08/08/docker-harbor-proxy/</url>
+    
+    <content type="html"><![CDATA[<h3 id="场景描述："><a href="#场景描述：" class="headerlink" title="场景描述："></a>场景描述：</h3><blockquote><p>有A,B,C三台服务器 A在互联网,B可以访问A,C在政务网,可以反问B,但是不能访问A<br>将Harbor装在A上,B作为代理服务器安装Nginx,C作为目标服务器,拉取镜像发布服务</p></blockquote><h3 id="B服务器Nginx配置"><a href="#B服务器Nginx配置" class="headerlink" title="B服务器Nginx配置"></a>B服务器Nginx配置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs shell">upstream harbor &#123;<br>  server      100.64.0.2:18088;<br>&#125;<br>server &#123;<br>  listen       8096;<br>  server_name  localhost;<br><br>  location / &#123;<br>    proxy_pass  http://harbor;<br>    client_max_body_size 0;<br>    proxy_connect_timeout 90;<br>    proxy_read_timeout 90;<br>    proxy_buffer_size 4k;<br>    proxy_buffers 6 32k;<br>    proxy_busy_buffers_size 64k;<br>    proxy_temp_file_write_size 64k;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure><h3 id="C服务器配置"><a href="#C服务器配置" class="headerlink" title="C服务器配置"></a>C服务器配置</h3><p>&#x2F;etc&#x2F;docker&#x2F;daemon.json</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">&#123;<br>  &quot;insecure-registries&quot;: [<br>    &quot;172.16.100.10:8096&quot;<br>  ],<br>&#125;<br></code></pre></td></tr></table></figure><h3 id="C服务器Docker代理配置"><a href="#C服务器Docker代理配置" class="headerlink" title="C服务器Docker代理配置"></a>C服务器Docker代理配置</h3><p>C服务器需要配置docker代理,才能正常访问harbor,不然无法登录<br>&#x2F;etc&#x2F;systemd&#x2F;system&#x2F;docker.service.d&#x2F;http-proxy.conf</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs shell">[Service]<br><span class="hljs-meta prompt_"># </span><span class="language-bash">NO_PROXY is optional and can be removed <span class="hljs-keyword">if</span> not needed</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">Change proxy_url to your proxy IP or FQDN and proxy_port to your proxy port</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">For Proxy server <span class="hljs-built_in">which</span> require username and password authentication, just add the proper username and password to the URL. (see example below)</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">Example without authentication</span><br>Environment=&quot;HTTP_PROXY=http://172.16.100.10:8096&quot; &quot;NO_PROXY=localhost,127.0.0.0/8&quot;<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">Example with authentication</span><br>Environment=&quot;HTTP_PROXY=http://username:password@172.16.100.10:8096&quot; &quot;NO_PROXY=localhost,127.0.0.0/8&quot;<br></code></pre></td></tr></table></figure><p>到此，C就可以通过B拉取A镜像仓库上的镜像来发布</p><h3 id="拉取示例"><a href="#拉取示例" class="headerlink" title="拉取示例"></a>拉取示例</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker pull 172.16.100.10:8096/library/nginx:latest<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Docker</category>
+      
+      <category>Harobor</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Harobor</tag>
+      
+      <tag>Docker</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Java List去重的两种方式</title>
+    <link href="/2023/08/08/java-repeat/"/>
+    <url>/2023/08/08/java-repeat/</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">Account</span> <span class="hljs-variable">account</span> <span class="hljs-operator">=</span> Account.builder()<br>                .name(<span class="hljs-string">&quot;张三&quot;</span>)<br>                .phone(<span class="hljs-string">&quot;13100001111&quot;</span>)<br>                .build();<br>        <span class="hljs-type">Account</span> <span class="hljs-variable">account1</span> <span class="hljs-operator">=</span> Account.builder()<br>                .name(<span class="hljs-string">&quot;张三&quot;</span>)<br>                .phone(<span class="hljs-string">&quot;13100001111&quot;</span>)<br>                .build();<br>        <span class="hljs-type">Account</span> <span class="hljs-variable">account2</span> <span class="hljs-operator">=</span> Account.builder()<br>                .name(<span class="hljs-string">&quot;张三1&quot;</span>)<br>                .phone(<span class="hljs-string">&quot;13100001112&quot;</span>)<br>                .build();<br>        <span class="hljs-type">Account</span> <span class="hljs-variable">account3</span> <span class="hljs-operator">=</span> Account.builder()<br>                .name(<span class="hljs-string">&quot;张三2&quot;</span>)<br>                .phone(<span class="hljs-string">&quot;13100001111&quot;</span>)<br>                .build();<br>        <span class="hljs-type">Account</span> <span class="hljs-variable">account4</span> <span class="hljs-operator">=</span> Account.builder()<br>                .name(<span class="hljs-string">&quot;张三3&quot;</span>)<br>                .phone(<span class="hljs-string">&quot;13100001113&quot;</span>)<br>                .build();<br>        List&lt;Account&gt; accountLists = Lists.newArrayList();<br>        accountLists.add(account);<br>        accountLists.add(account1);<br>        accountLists.add(account2);<br>        accountLists.add(account3);<br>        accountLists.add(account4);<br>        log.info(<span class="hljs-string">&quot;原始数组：&#123;&#125;&quot;</span>, accountLists.size());<br>        <span class="hljs-comment">// 通过map的方式去重</span><br>        Map&lt;String, Account&gt; map = Maps.newHashMap();<br>        accountLists.forEach(r -&gt; &#123;<br>            map.put(r.getName() + r.getPhone(), r);<br>            log.info(r.getName() + <span class="hljs-string">&quot;-&quot;</span> + r.getPhone());<br>        &#125;);<br>        log.error(<span class="hljs-string">&quot;---通过map的方式去重---&quot;</span>);<br>        List&lt;Account&gt; collect = map.values().stream().collect(Collectors.toList());<br>        log.info(<span class="hljs-string">&quot;新数组：&#123;&#125;&quot;</span>, collect.size());<br>        collect.forEach(r -&gt; &#123;<br>            log.info(r.getName() + <span class="hljs-string">&quot;-&quot;</span> + r.getPhone());<br>        &#125;);<br>        log.error(<span class="hljs-string">&quot;---通过Java8 的方式去重---&quot;</span>);<br>        List&lt;Account&gt; accounts = accountLists.stream().collect(Collectors.collectingAndThen(Collectors.toCollection(() -&gt; <span class="hljs-keyword">new</span> <span class="hljs-title class_">TreeSet</span>&lt;&gt;(Comparator.comparing(r -&gt; r.getName() + <span class="hljs-string">&quot;-&quot;</span> + r.getPhone()))), ArrayList::<span class="hljs-keyword">new</span><br>        ));<br>        log.info(<span class="hljs-string">&quot;新数组：&#123;&#125;&quot;</span>, accounts.size());<br>        accounts.forEach(r -&gt; log.info(r.getName() + <span class="hljs-string">&quot;-&quot;</span> + r.getPhone()));<br>    &#125;<br><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Java</category>
+      
+      <category>List</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Java</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  
+</search>
