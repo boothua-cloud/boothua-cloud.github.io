@@ -1,0 +1,42 @@
+# 导航栏
+navbar:
+  blog_title: 奔跑的大黄
+# 首页配置
+index:
+  slogan:
+    enable: true
+    text: 欢迎访问我的博客，在这里记录了我在开发过程中遇到的所有坑
+    api:
+      enable: True
+      url: "https://v1.hitokoto.cn/"
+      method: "GET"
+      headers: { }
+      keys: [ "hitokoto" ]
+# 关于
+about:
+  avatar: /img/avatar.png
+  name: "黄忠益"
+  intro: "做一个「优雅」的程序猿"
+  icons:
+    - { class: 'iconfont icon-github-fill', link: 'https://github.com/boothua-cloud/boothua-cloud.github.io', tip: 'GitHub' }
+    - { class: 'iconfont icon-wechat-fill', qrcode: '/img/wechat.jpg' ,tip: 'WeChat' }
+    - { class: 'iconfont icon-mail', link: 'boothua@163.com' ,tip: 'Email' }
+
+# 强制https
+force_https: false
+
+# 评论
+post:
+  comments:
+    enable: false
+    type: twikoo
+    twikoo:
+      enable: true
+      visitor: true
+
+footer:
+  statistics:
+    enable: true
+    source: "busuanzi"  # 可选 leancloud | busuanzi  根据自己需求选择
+    pv_format: "总访问量 {} 次"  # 显示的文本，{}是数字的占位符（必须包含)，下同
+    uv_format: "总访客数 {} 人"
