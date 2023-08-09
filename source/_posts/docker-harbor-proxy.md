@@ -6,13 +6,15 @@ tags:
   - Docker
 categories:
   [ Docker,Harobor]
+
+index_img: /img/pages/R-C.png
 ---
 
 ### 场景描述：
 
 > 有A,B,C三台服务器 A在互联网,B可以访问A,C在政务网,可以反问B,但是不能访问A
 > 将Harbor装在A上,B作为代理服务器安装Nginx,C作为目标服务器,拉取镜像发布服务
-
+<!-- more -->
 ### B服务器Nginx配置
 
 ```shell
