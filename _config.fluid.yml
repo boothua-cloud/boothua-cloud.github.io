@@ -25,23 +25,45 @@ about:
   icons:
     - { class: 'iconfont icon-github-fill', link: 'https://github.com/boothua-cloud/boothua-cloud.github.io', tip: 'GitHub' }
     - { class: 'iconfont icon-wechat-fill', qrcode: '/img/wechat.png', tip: 'WeChat' }
-    - { class: 'iconfont icon-mail', href: 'boothua@163.com', tip: 'boothua@163.com' }
 
 # 强制https
 force_https: false
 
-# 评论
+# 文章配置
 post:
-  comments:
-    enable: false
-    type: twikoo
-    twikoo:
+  meta:
+    # 作者，优先根据 front-matter 里 author 字段，其次是 hexo 配置中 author 值
+    # Author, based on `author` field in front-matter, if not set, based on `author` value in hexo config
+    author:
       enable: true
-      visitor: true
-
-footer:
-  statistics:
+  # 浏览量计数
+  # Number of visits
+  views:
     enable: true
-    source: "busuanzi"  # 可选 leancloud | busuanzi  根据自己需求选择
-    pv_format: "总访问量 {} 次"  # 显示的文本，{}是数字的占位符（必须包含)，下同
-    uv_format: "总访客数 {} 人"
+    # 统计数据来源
+    # Data Source
+    # Options: busuanzi | leancloud
+    source: "busuanzi"
+footer:
+  content: '
+    Copyright
+    <i class="iconfont icon-copyright"></i>
+    2023 Yid-h
+    <a href="mailto:boothua@163.com" rel="nofollow noopener"><span><i class="iconfont icon-mail"></i></span></a>
+  '
+#  statistics:
+#    enable: true
+#    source: "busuanzi"  # 可选 leancloud | busuanzi  根据自己需求选择
+#    pv_format: "总访问量 {} 次"  # 显示的文本，{}是数字的占位符（必须包含)，下同
+#    uv_format: "总访客数 {} 人"
+
+  beian:
+    enable: true
+    # ICP证号
+    icp_text: 黔ICP备2020010847号-2
+    # 公安备案号，不填则只显示ICP
+    police_text:
+    # 公安备案的编号，用于URL跳转查询
+    police_code:
+    # 公安备案的图片. 为空时不显示备案图片
+    police_icon:
