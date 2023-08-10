@@ -17,7 +17,7 @@ index_img: /img/pages/R-C.png
 <!-- more -->
 ### B服务器Nginx配置
 
-```shell
+```nginx
 upstream harbor {
   server      100.64.0.2:18088;
 }
@@ -42,7 +42,7 @@ server {
 
 /etc/docker/daemon.json
 
-```shell
+```conf
 {
   "insecure-registries": [
     "172.16.100.10:8096"
@@ -55,7 +55,7 @@ server {
 C服务器需要配置docker代理,才能正常访问harbor,不然无法登录
 /etc/systemd/system/docker.service.d/http-proxy.conf
 
-```shell
+```service
 [Service]
 # NO_PROXY is optional and can be removed if not needed
 # Change proxy_url to your proxy IP or FQDN and proxy_port to your proxy port
