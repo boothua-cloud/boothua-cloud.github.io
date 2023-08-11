@@ -1,13 +1,15 @@
 ---
 title: Java List去重的几种方式
 layout: post
-date: 2023-08-08 21:06:47
 published: true
 categories:
-  [ Java,List ]
+  - Java
+  - List
 tags:
   - Java
 index_img: /img/pages/Java.jpg
+abbrlink: 40406fb8
+date: 2023-08-08 21:06:47
 ---
 在实际的业务开发中，经常会遇到List去重的场景，这里我将Java中常见的几种List去重方式记录一下；
 <!-- more -->

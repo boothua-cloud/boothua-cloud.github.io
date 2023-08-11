@@ -5,9 +5,11 @@ tags:
   - Harobor
   - Docker
 categories:
-  [ Docker,Harobor]
-
+  - Docker
+  - Harobor
 index_img: /img/pages/R-C.png
+abbrlink: fcdd0fa5
+date: '2023-08-08 20:21:23'
 ---
 
 ### 场景描述：
