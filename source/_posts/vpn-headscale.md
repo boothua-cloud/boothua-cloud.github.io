@@ -159,4 +159,4 @@ server {
 > 
 > 关于如何解决https的问题，可以参考我的另外一篇文章，自定义[自签名证书](https://boothua.cn/posts/f1f60ed2.html)
 > 
-> headscale只是一个服务托管，还需要配合Tailscale使用，如何搭建Tailscale，请参考我的另外一篇文章：[内网穿透解决方案-Tailscale](https://boothua.cn/posts/205590f3.html)
+> headscale只是一个服务托管，还需要配合Tailscale使用，如何搭建Tailscale，请参考我的另外一篇文章：[内网穿透解决方案-Tailscale](https://boothua.cn/posts/96cfd1b1.html)
