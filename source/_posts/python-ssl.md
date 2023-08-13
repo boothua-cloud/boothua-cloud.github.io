@@ -107,5 +107,5 @@ class Certificate:
 ```
 ### 总结
 1. 到此通过python生成ssl自签名证书就已经实现了，
-2. 如果需要在证书中添加其他身份验证的信息修改name_attrs，在里面加上相关身份认证即可，比如说user_id,具体请信息请看NameOID
+2. 如果需要在证书中添加其他身份验证的信息修改name_attrs，在里面加上相关身份认证即可，比如说user_id,具体信息请看NameOID
 3. 其他细节还需要参考cryptography库
