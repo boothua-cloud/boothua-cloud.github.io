@@ -1,12 +1,13 @@
 ---
-title: HTTPS自签名证书
-abbrlink: f1f60ed2
+title: SSL自签名证书
+abbrlink: 5c40fe32
 tags:
   - Nginx
-  - Https
+  - SSL
 categories:
   - Linux
-index_img: /img/pages/https.jpeg
+  - SSL
+index_img: /img/pages/openssl.jpeg
 date: 2023-08-13 14:37:48
 ---
 ### 自签名证书
