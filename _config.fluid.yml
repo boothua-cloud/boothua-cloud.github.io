@@ -422,7 +422,7 @@ footer:
   content: '
       Copyright
       <i class="iconfont icon-copyright"></i>
-      2023 Yid-h
+      2023 Yid-H
       <a href="mailto:boothua@163.com" rel="nofollow noopener"><span><i class="iconfont icon-mail"></i></span></a>
     '
   # 展示网站的 PV、UV 统计数
@@ -444,7 +444,7 @@ footer:
     # 公安备案号，不填则只显示ICP
     police_text: 贵公网安备 52011502002691号
     # 公安备案的编号，用于URL跳转查询
-    police_code: http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=52011502002691
+    police_code: 52011502002691
 
 
 #---------------------------
@@ -950,7 +950,7 @@ about:
   banner_img_height: 60
   banner_mask_alpha: 0.3
   avatar: /img/avatar.jpeg
-  name: "黄忠益"
+  name: "Yid-H"
   intro: "做一个「优雅」的程序猿"
   # 更多图标可从 https://hexo.fluid-dev.com/docs/icon/ 查找，`class` 代表图标的 css class，添加 `qrcode` 后，图标不再是链接而是悬浮二维码
   # More icons can be found from https://hexo.fluid-dev.com/docs/en/icon/  `class` is the css class of the icon. If adding `qrcode`, The icon is no longer a link, but a hovering QR code

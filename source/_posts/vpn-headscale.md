@@ -7,7 +7,7 @@ tags:
 categories:
   - VPN
 index_img: /img/pages/headscale.png
-hide: true
+hide: false
 abbrlink: '3157e366'
 date: 2023-08-09 23:20:33
 ---
@@ -74,3 +74,80 @@ sudo systemctl start headscale.service
 # 测试,不出意外的话，会出现帮助提示
 sudo headscale -h
 ```
+![headscale -h](../img/pages/headscale-h.png)
+#### Docker 安装
+> 1. 准备docker-compose.yml文件
+> 2. 准备config.yaml，和宿主机安装一样的，这一步是防止配置文件丢失
+
+```yaml
+version: '3'
+services:
+  headscale:
+    image: headscale/headscale
+    container_name: headscale
+    hostname: headscale
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+      - "8080:8080"
+    restart: always
+    volumes:
+      - ./headscale/:/etc/headscale/
+    command: [ "headscale", "serve" ]
+```
+开始安装
+```shell
+docker-compose up -d headscale
+docker logs -f headscale
+```
+
+#### 反向代理
+```conf
+map $http_upgrade $connection_upgrade {
+    default      keep-alive;
+    'websocket'  upgrade;
+    ''           close;
+}
+server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+    #填写绑定证书的域名
+    server_name xx.xx.xx;
+    #证书文件名称
+    ssl_certificate  xx.crt;
+    #私钥文件名称
+    ssl_certificate_key xx.key;
+    ssl_session_timeout 5m;
+    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers on;
+    location / {
+        proxy_pass  http://127.0.0.1:8080;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+        proxy_set_header Host $server_name;
+        proxy_redirect http:// https://;
+        proxy_buffering off;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $http_x_forwarded_proto;
+        add_header Strict-Transport-Security "max-age=15552000; includeSubDomains" always;
+    }
+}
+```
+到此headscale就安装成功了,可以通过浏览器访问反向代理地址:https://xx.xx.xx.xx/apple
+![headscale](../img/pages/headscale-apple.png)
+#### headscale常用命令
+> headscale -h 帮助
+> headscale apikeys api密钥，用于对接API
+> headscale users 管理headscle用户
+> headscale preauthkeys 管理授权密钥
+> headscale node 管理节点
+> headscale route 管理路由
+
+#### 总结
+> headscale有多种安装方式，这里推荐用官方提供的deb包安装
+> headscale自带中继服务，需要手动开启，前提是server_url必须是https
+> 经测试，在局域网内安装headscale，需要自签名证书，并且需要反向代理，不然tailscale无法验证
+> 关于如何解决https的问题，可以参考我的另外一篇文章，自定义自签名证书
