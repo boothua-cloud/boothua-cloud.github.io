@@ -16,7 +16,7 @@ date: 2023-08-13 17:54:15
 <!-- more -->
 ### 实现
 ```shell
-sudo apt install -y apt-transport-https
+sudo aptitude install -y apt-transport-https
 # 添加Nginx的官方仓库密钥：
 curl -fsSL https://nginx.org/keys/nginx_signing.key | sudo gpg --dearmor -o /usr/share/keyrings/nginx-archive-keyring.gpg
 # 添加Nginx的仓库信息到apt源列表中
