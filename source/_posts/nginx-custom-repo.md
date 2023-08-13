@@ -22,17 +22,17 @@ curl -fsSL https://nginx.org/keys/nginx_signing.key | sudo gpg --dearmor -o /usr
 # 添加Nginx的仓库信息到apt源列表中
 echo "deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] https://nginx.org/packages/ubuntu/ $(lsb_release -cs) nginx" | sudo tee /etc/apt/sources.list.d/nginx.list
 # 更新源
-sudo apt update
+sudo aptitude update
 ```
 ### 安装指定版本的Nginx
 **查看所有的Nginx版本**
 ```shell
-sudo aptitude nginx
+sudo aptitude versions nginx
 ```
 ![列出所有可用的Nginx版本](../img/pages/nginx-custos-rep.png)
 **安装Nginx**
 ```shell
-sudo aptitude install sudo aptitude install nginx=1.24.0-1~jammy -y
+sudo aptitude install nginx=1.24.0-1~jammy -y
 ```
 
 **到此Nginx就安装完成了**
