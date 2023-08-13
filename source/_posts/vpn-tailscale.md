@@ -9,5 +9,5 @@ categories:
 index_img: /img/pages/tailscale.jpeg
 hide: true
 abbrlink: 205590f3
-date: 2023-08-09 23:20:35
+date: 2023-08-09 23:20:00
 ---

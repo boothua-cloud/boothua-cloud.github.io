@@ -442,11 +442,9 @@ footer:
     # ICP证号
     icp_text: 黔ICP备2020010847号-2
     # 公安备案号，不填则只显示ICP
-    police_text:
+    police_text: 贵公网安备 52011502002691号
     # 公安备案的编号，用于URL跳转查询
-    police_code:
-    # 公安备案的图片. 为空时不显示备案图片
-    police_icon:
+    police_code: http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=52011502002691
 
 
 #---------------------------
