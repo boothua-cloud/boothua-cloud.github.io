@@ -89,7 +89,7 @@ sudo tailscale --login-server=https://xx.xx.xx --auth-key=xxxxxx --accept-dns=fa
 ### 总结
 1. 到此Tailscale+Headscale搭建内网穿透就成功了，可以多台机器上安装Tailscale并注册到Headscale服务，使用VPN内网IP就可以互相访问了。
 2. Tailscale还有一个功能就是子网路由
-   ![子网路由器和流量中继节点](../img/pages/tailscale/tailscale-register.png)
+   ![子网路由器和流量中继节点](../img/pages/tailscale/subnets.png)
 通俗点讲就是在家里面的路由器上和手机上安装Tailscale客户端，路由器充当网管，无论你走到哪儿，都可以访问家里面的任意一台设备，比如说NAS，具体配置查看[官网教程](https://tailscale.com/kb/1019/subnets/)
 3. 如果觉得子网路由功能无法满足，Tailscale还有一个功能是点到点网络
    ![子网路由器和流量中继节点](../img/pages/tailscale/snat-subnet-routes-site-to-site.svg)
