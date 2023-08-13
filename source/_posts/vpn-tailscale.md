@@ -1,13 +1,13 @@
 ---
 layout: post
-title: 搭建自己的VPN安全通道-Tailscale
+title: 内网穿透解决方案-Tailscale
 tags:
   - VPN
   - Tailscale
 categories:
   - 内网穿透
 index_img: /img/pages/tailscale.jpeg
-abbrlink: 205590f3
+abbrlink: 96cfd1b1
 date: 2023-08-09 23:20:00
 ---
 ### 简介
@@ -95,3 +95,4 @@ sudo tailscale --login-server=https://xx.xx.xx --auth-key=xxxxxx --accept-dns=fa
    ![子网路由器和流量中继节点](../img/pages/tailscale/snat-subnet-routes-site-to-site.svg)
 按照我的理解就是，在公司的某一台机器上安装Tailscale，在家里的路由也安装Tailscale，同时打开公司和路由器上打开IP转发功能，然后在公司就可以通过NAS的局域网IP进行访问，同时也可以在家里面通过公司局域网IP访问数据库等相关资源，具体配置查看[官网教程](https://tailscale.com/kb/1214/site-to-site/)
 4. Tailscale的其他功能远不止这些，更加好玩儿的功能，还得研究官方文档
+5. 关于如何搭建Headscale自托管服务，请参考我的另外一篇文章：[内网穿透解决方案-Headscale](https://boothua.cn/posts/87cda224.html)
