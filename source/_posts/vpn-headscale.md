@@ -1,14 +1,14 @@
 ---
 layout: post
-title: 搭建自己的VPN安全通道-Headscale
+title: 内网穿透解决方案-Headscale
 tags:
   - VPN
   - Headscale
 categories:
-  - VPN
+  - 内网穿透
 index_img: /img/pages/headscale.png
 hide: false
-abbrlink: '3157e366'
+abbrlink: 87cda224
 date: 2023-08-09 23:20:33
 ---
 ### 简介
@@ -101,7 +101,7 @@ docker-compose up -d headscale
 docker logs -f headscale
 ```
 
-#### 反向代理
+### 反向代理
 ```conf
 map $http_upgrade $connection_upgrade {
     default      keep-alive;
@@ -138,7 +138,7 @@ server {
 ```
 到此headscale就安装成功了,可以通过浏览器访问反向代理地址:https://xx.xx.xx.xx/apple
 ![headscale](../img/pages/headscale-apple.png)
-#### headscale常用命令
+### headscale常用命令
 > headscale -h 帮助
 > headscale apikeys api密钥，用于对接API
 > headscale users 管理headscle用户
@@ -146,7 +146,7 @@ server {
 > headscale node 管理节点
 > headscale route 管理路由
 
-#### 总结
+### 总结
 > headscale有多种安装方式，这里推荐用官方提供的deb包安装
 > headscale自带中继服务，需要手动开启，前提是server_url必须是https
 > 经测试，在局域网内安装headscale，需要自签名证书，并且需要反向代理，不然tailscale无法验证

@@ -421,7 +421,7 @@ footer:
   # HTML of the first line of the footer, it is recommended to keep the Fluid link to promote this theme to more people
   content: '
       Copyright
-      <i class="iconfont icon-copyright"></i>
+      &copy;
       2023 Yid-H
       <a href="mailto:boothua@163.com" rel="nofollow noopener"><span><i class="iconfont icon-mail"></i></span></a>
     '
