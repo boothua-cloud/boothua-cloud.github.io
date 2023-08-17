@@ -13,6 +13,17 @@ author: Yid-H
 language: zh-CN
 timezone: 'Asia/Chongqing'
 
+feed:
+  enable: true
+  order_by: -date
+  icon: logo.ico
+  # Generate both atom and rss2 feeds
+  type:
+    - atom
+    - rss2
+  path:
+    - atom.xml
+    - rss2.xml
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: https://boothua.cn
