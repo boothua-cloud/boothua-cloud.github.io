@@ -950,7 +950,7 @@ tag:
 # About Page
 #---------------------------
 about:
-  enable: true
+  enable: false
   banner_img: /img/wallhaven-3lro66_1920x1080.png
   banner_img_height: 60
   banner_mask_alpha: 0.3

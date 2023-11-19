@@ -76,7 +76,7 @@ sudo headscale preauthkeys create -e 9999d
 #### Ubuntu
 ```shell
 # tailscale登陆headscale
-sudo tailscale --login-server=https://xx.xx.xx --auth-key=xxxxxx --accept-dns=false --accept-routes --reset
+sudo tailscale login --login-server=https://xx.xx.xx --auth-key=xxxxxx --accept-dns=false --accept-routes
 ```
 #### MacOS
 ![打开Tailscale](../img/pages/tailscale/tailscale-mac.png)
